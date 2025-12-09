@@ -1,5 +1,5 @@
-import { db } from '../src/db/index';
-import { sessions, companies, quizzes } from '../src/db/schema';
+import { db } from './_db/index';
+import { sessions, companies, quizzes } from './_db/schema';
 import { desc, eq } from 'drizzle-orm';
 
 function generateSlug(length = 6) {
