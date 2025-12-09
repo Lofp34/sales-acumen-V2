@@ -1,5 +1,5 @@
-import { db } from './_db/index';
-import { participants, responses } from './_db/schema';
+import { db } from './db';
+import { participants, responses } from './schema';
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {

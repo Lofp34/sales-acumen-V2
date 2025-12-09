@@ -1,5 +1,5 @@
-import { db } from './_db/index'; // Adjust path if needed during build
-import { companies } from './_db/schema';
+import { db } from './db'; // Adjust path if needed during build
+import { companies } from './schema';
 import { eq } from 'drizzle-orm';
 
 export default async function handler(req, res) {
