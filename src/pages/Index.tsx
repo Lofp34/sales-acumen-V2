@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ClipboardList, Shield, BarChart3 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -27,13 +26,11 @@ const Index = () => {
             </div>
             <h2 className="text-2xl font-semibold mb-3">Passer le questionnaire</h2>
             <p className="text-muted-foreground mb-6">
-              Évaluez vos connaissances sur le pilotage commercial suite à l'atelier Ovea
+              L'accès se fait via un lien personnel envoyé par votre coach.
             </p>
-            <Link to="/quiz">
-              <Button size="lg" className="w-full">
-                Commencer l'évaluation
-              </Button>
-            </Link>
+            <Button size="lg" className="w-full" disabled>
+              Demander un lien d'accès
+            </Button>
           </Card>
 
           <Card className="p-8 hover:shadow-[var(--shadow-elevated)] transition-shadow">
