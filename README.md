@@ -4,6 +4,8 @@
 
 **URL**: https://lovable.dev/projects/1d3b3391-fa58-478e-afe9-ddfdad52cd86
 
+**Project status**: documentation/project-status.md
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
