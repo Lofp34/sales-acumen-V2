@@ -28,3 +28,4 @@ Fournir une application simple pour creer des questionnaires post-formation, env
 
 ## Journal des evolutions
 - 2026-01-22: Retire le flux Supabase legacy, ajoute /api/health.
+- 2026-01-22: Corrige l'import Link manquant sur la page d'accueil.

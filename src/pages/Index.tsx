@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ClipboardList, Shield, BarChart3 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
