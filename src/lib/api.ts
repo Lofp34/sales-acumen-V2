@@ -48,3 +48,17 @@ export const submitResponse = (data: any) => fetchJson<any>('/submit-response', 
     body: JSON.stringify(data)
 });
 export const getResults = (sessionId: number) => fetchJson<any>(`/get-results?sessionId=${sessionId}`);
+
+// Documents
+export const getDocuments = (params?: { trainingId?: number; docType?: string }) => {
+    const search = new URLSearchParams();
+    if (params?.trainingId) search.set("trainingId", String(params.trainingId));
+    if (params?.docType) search.set("docType", params.docType);
+    const suffix = search.toString() ? `?${search.toString()}` : "";
+    return fetchJson<any[]>(`/documents${suffix}`);
+};
+
+export const generateConvention = (payload: any) => fetchJson<any>('/documents/generate/convention', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+});
