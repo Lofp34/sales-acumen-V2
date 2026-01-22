@@ -37,15 +37,29 @@ export default function PublicQuiz() {
             // Transform questions to match UI components if needed
             // Gemini structure: { title, description, questions: [{ question, options: [], correctAnswerIndex }] }
             // Stored in `data.quizContent`
-            const rawQs = data.quizContent.questions || [];
-            const mappedQs = rawQs.map((q: any, idx: number) => ({
-                id: `q-${idx}`,
-                question_text: q.question,
-                question_number: idx + 1,
-                theme: "General",
-                choices: q.options.map((opt: string) => ({ value: opt, label: opt })),
-                correct_answer: q.options[q.correctAnswerIndex]
-            }));
+            const rawQs = Array.isArray(data.quizContent)
+                ? data.quizContent
+                : (data.quizContent?.questions || []);
+            const mappedQs = rawQs.map((q: any, idx: number) => {
+                const optionList = Array.isArray(q.options)
+                    ? q.options
+                    : (Array.isArray(q.choices)
+                        ? q.choices.map((c: any) => c?.label ?? c?.value ?? String(c))
+                        : []);
+                const correctAnswer =
+                    typeof q.correctAnswerIndex === "number" && optionList[q.correctAnswerIndex]
+                        ? optionList[q.correctAnswerIndex]
+                        : (q.correct_answer ?? "");
+
+                return {
+                    id: q.id ?? `q-${idx}`,
+                    question_text: q.question ?? q.question_text ?? `Question ${idx + 1}`,
+                    question_number: q.question_number ?? idx + 1,
+                    theme: q.theme ?? "General",
+                    choices: optionList.map((opt: string) => ({ value: opt, label: opt })),
+                    correct_answer: correctAnswer
+                };
+            });
             setQuestions(mappedQs);
         } catch (e) {
             toast.error("Session introuvable ou fermée");
@@ -167,6 +181,11 @@ export default function PublicQuiz() {
     }
 
     // Quiz Stage
+    if (!questions.length || !questions[currentIdx]) {
+        return <div className="min-h-screen flex items-center justify-center p-10 text-muted-foreground">
+            Le questionnaire n'est pas chargé. Merci de recharger la page ou de contacter votre coach.
+        </div>;
+    }
     const currentQ = questions[currentIdx];
     return (
         <QuizQuestion
