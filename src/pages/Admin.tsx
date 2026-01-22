@@ -15,6 +15,7 @@ import { ArrowLeft, Plus, Copy, Check, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { CreateQuiz } from "@/components/Admin/CreateQuiz";
+import { CreateConvention } from "@/components/Admin/CreateConvention";
 import {
   getCompanies, createCompany,
   getQuizzes,
@@ -38,7 +39,7 @@ export default function Admin() {
 
   const loadData = async () => {
     try {
-      if (activeTab === 'companies' || activeTab === 'sessions') {
+      if (activeTab === 'companies' || activeTab === 'sessions' || activeTab === 'conventions') {
         const c = await getCompanies();
         setCompanies(c);
       }
@@ -129,6 +130,7 @@ export default function Admin() {
           <TabsList>
             <TabsTrigger value="dashboard">Tableau de bord</TabsTrigger>
             <TabsTrigger value="sessions">Sessions</TabsTrigger>
+            <TabsTrigger value="conventions">Conventions</TabsTrigger>
             <TabsTrigger value="quizzes">Questionnaires</TabsTrigger>
             <TabsTrigger value="companies">Entreprises</TabsTrigger>
           </TabsList>
@@ -238,6 +240,10 @@ export default function Admin() {
                 </TableBody>
               </Table>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="conventions" className="space-y-4">
+            <CreateConvention companies={companies} />
           </TabsContent>
 
           <TabsContent value="companies">
