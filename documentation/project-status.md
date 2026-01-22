@@ -30,3 +30,4 @@ Fournir une application simple pour creer des questionnaires post-formation, env
 - 2026-01-22: Retire le flux Supabase legacy, ajoute /api/health.
 - 2026-01-22: Corrige l'import Link manquant sur la page d'accueil.
 - 2026-01-22: Migration de l'API Gemini vers le SDK officiel @google/genai.
+- 2026-01-22: Rend l'affichage du quiz public plus robuste si le format des questions varie.
