@@ -19,6 +19,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/quiz" element={<Quiz />} />
           {/* Public Quiz Route with Slug */}
           <Route path="/start/:slug" element={<PublicQuiz />} />
 

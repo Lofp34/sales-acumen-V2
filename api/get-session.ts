@@ -1,5 +1,5 @@
-import { db } from './db';
-import { sessions, quizzes, companies } from './schema';
+import { db } from './db.js';
+import { sessions, quizzes, companies } from './schema.js';
 import { eq } from 'drizzle-orm';
 
 export default async function handler(req, res) {
